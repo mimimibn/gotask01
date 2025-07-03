@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-
+	func1()
 }
 
 /*
@@ -20,9 +20,9 @@ func func1() {
 	for i := 0; i < len(nums); i++ {
 		temp[nums[i]] += 1
 	}
-	for j := range temp {
-		if temp[j] == 1 {
-			fmt.Println(j)
+	for k, v := range temp {
+		if v == 1 {
+			fmt.Println(k)
 		}
 	}
 }
