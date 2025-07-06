@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 func main() {
-	func1()
+	func2()
 }
 
 /*
@@ -24,5 +26,27 @@ func func1() {
 		if v == 1 {
 			fmt.Println(k)
 		}
+	}
+}
+
+/*
+*
+回文数
+
+考察：数字操作、条件判断
+题目：判断一个整数是否是回文数
+*/
+func func2() {
+	str := 1234321
+	tempStr := strconv.Itoa(str)
+	bytes := []byte(tempStr)
+	var newStr strings.Builder
+	for i := len(bytes) - 1; i >= 0; i-- {
+		newStr.WriteString(string(bytes[i]))
+	}
+	if newStr.String() == tempStr {
+		fmt.Println(str, "是回文数")
+	} else {
+		fmt.Println(str, "不是回文数")
 	}
 }
