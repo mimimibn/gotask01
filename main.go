@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -13,8 +14,8 @@ func main() {
 	//func4()
 	//func5()
 	//func6()
-	//func7()
-	func8()
+	func7()
+	//func8()
 }
 
 /*
@@ -189,7 +190,22 @@ func func6() {
 将当前区间与切片中最后一个区间进行比较，如果有重叠，则合并区间；如果没有重叠，则将当前区间添加到切片中。
 */
 func func7() {
-
+	intervals := [][]int{{1, 3}, {2, 6}, {8, 10}, {15, 18}}
+	//temp := []int{}
+	//tempIndex := 0
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	merged := [][]int{intervals[0]}
+	for _, v := range intervals[1:] {
+		end := merged[len(merged)-1]
+		if v[0] <= end[1] {
+			end[1] = v[1]
+		} else {
+			merged = append(merged, v)
+		}
+	}
+	fmt.Println(merged)
 }
 
 /*
