@@ -13,7 +13,7 @@ func main() {
 	//用来练习读取配置文件，只加载了mysql.dns
 	config, configErr := config.LoadConfig("./internal/config/dev.yaml")
 	if configErr != nil {
-		log.Fatalf("加载配置失败: %v", configErr)
+		log.Fatal("加载配置失败: %v", configErr)
 	}
 	r := gin.Default()
 	if err := repository.InitDB(config.Mysql.Dns); err != nil {
